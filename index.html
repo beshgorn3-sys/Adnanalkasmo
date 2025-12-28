@@ -106,6 +106,15 @@
             margin-top: 10px;
         }
         
+        .info {
+            font-size: 1.2rem;
+            color: #ffcc80;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
         .message {
             display: none;
             margin-top: 50px;
@@ -191,6 +200,7 @@
                     <div class="countdown-label">ثانية</div>
                 </div>
             </div>
+            <div class="info" id="countdownInfo">جاري تحديث العد التنازلي...</div>
         </div>
         
         <div class="message" id="finalMessage">
@@ -204,27 +214,25 @@
     </div>
 
     <script>
-        // وقت ثابت لانتهاء العد التنازلي (يجب تعديله عند نشر الصفحة)
-        // هنا ضع الوقت الذي تريد أن يبدأ منه العد التنازلي
-        // الصيغة: new Date(السنة, الشهر-1, اليوم, الساعة, الدقيقة, الثانية)
-        // مثال: 1 يناير 2025 الساعة 12:00 ظهراً
-        const countdownEndTime = new Date(2025, 11, 28, 15, 9, 0).getTime();
-        
-        // بدلاً من ذلك، يمكننا تحديد وقت ثابت من الآن + 43 ساعة
-        // هذا سيجعل العد التنازلي يبدأ من وقت نشر الصفحة
-        // عندما تنشر الصفحة، احذف هذا السطر واستخدم السطر السابق مع الوقت المحدد
+        // وقت انتهاء العد التنازلي (43 ساعة من الآن)
+        // هذا وقت ثابت بالنسبة للجميع
         const countdownEndTime = new Date().getTime() + (43 * 60 * 60 * 1000);
         
-        // تحديث العد التنازلي كل ثانية
+        console.log("وقت انتهاء العد التنازلي:", new Date(countdownEndTime).toLocaleString('ar-SA'));
+        
+        // دالة لتحديث العد التنازلي
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = countdownEndTime - now;
+            
+            console.log("الوقت المتبقي:", Math.floor(distance / 1000), "ثانية");
             
             // إذا انتهى الوقت
             if (distance < 0) {
                 document.getElementById("hours").innerHTML = "00";
                 document.getElementById("minutes").innerHTML = "00";
                 document.getElementById("seconds").innerHTML = "00";
+                document.getElementById("countdownInfo").innerHTML = "انتهى الوقت!";
                 
                 // إظهار الرسالة النهائية
                 document.getElementById("finalMessage").style.display = "block";
@@ -240,6 +248,20 @@
             document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
             document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
             document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+            
+            // تحديث المعلومات
+            const endTime = new Date(countdownEndTime);
+            const endTimeStr = endTime.toLocaleDateString('ar-SA', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            document.getElementById("countdownInfo").innerHTML = 
+                `ينتهي العد التنازلي في: ${endTimeStr}`;
         }
         
         // تحديث العد التنازلي فوراً ثم كل ثانية
@@ -249,6 +271,7 @@
         // التأكد من عرض الصفحة بشكل صحيح عند التحميل
         window.addEventListener('load', function() {
             document.body.style.opacity = 1;
+            console.log("تم تحميل الصفحة، بدء العد التنازلي...");
         });
     </script>
 </body>
