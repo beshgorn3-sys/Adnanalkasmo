@@ -179,11 +179,7 @@
             <div class="countdown-title">الوقت المتبقي للرد:</div>
             <div class="countdown">
                 <div class="countdown-box">
-                    <div class="countdown-value" id="days">48</div>
-                    <div class="countdown-label">يوم</div>
-                </div>
-                <div class="countdown-box">
-                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-value" id="hours">43</div>
                     <div class="countdown-label">ساعة</div>
                 </div>
                 <div class="countdown-box">
@@ -192,7 +188,7 @@
                 </div>
                 <div class="countdown-box">
                     <div class="countdown-value" id="seconds">00</div>
-                    <div class="countdown-label">ثانية </div>
+                    <div class="countdown-label">ثانية</div>
                 </div>
             </div>
         </div>
@@ -208,19 +204,24 @@
     </div>
 
     <script>
-        // تحديد وقت انتهاء العد التنازلي (48 ساعة من الآن)
-        const countdownDuration = 48 * 60 * 60 * 1000; // 48 ساعة بالميلي ثانية
-        const countdownEndTime = new Date().getTime() + countdownDuration;
+        // وقت ثابت لانتهاء العد التنازلي (يجب تعديله عند نشر الصفحة)
+        // هنا ضع الوقت الذي تريد أن يبدأ منه العد التنازلي
+        // الصيغة: new Date(السنة, الشهر-1, اليوم, الساعة, الدقيقة, الثانية)
+        // مثال: 1 يناير 2025 الساعة 12:00 ظهراً
+        const countdownEndTime = new Date(2025, 11, 28, 3, 9, 0).getTime();
+        
+        // بدلاً من ذلك، يمكننا تحديد وقت ثابت من الآن + 43 ساعة
+        // هذا سيجعل العد التنازلي يبدأ من وقت نشر الصفحة
+        // عندما تنشر الصفحة، احذف هذا السطر واستخدم السطر السابق مع الوقت المحدد
+        const countdownEndTime = new Date().getTime() + (43 * 60 * 60 * 1000);
         
         // تحديث العد التنازلي كل ثانية
-        const countdownFunction = setInterval(function() {
+        function updateCountdown() {
             const now = new Date().getTime();
             const distance = countdownEndTime - now;
             
             // إذا انتهى الوقت
             if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("days").innerHTML = "00";
                 document.getElementById("hours").innerHTML = "00";
                 document.getElementById("minutes").innerHTML = "00";
                 document.getElementById("seconds").innerHTML = "00";
@@ -231,18 +232,19 @@
             }
             
             // حساب الوقت المتبقي
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const hours = Math.floor(distance / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            const milliseconds = Math.floor((distance % 1000) / 10);
             
             // عرض الوقت المتبقي
-            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
             document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
             document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
-            
-        }, 10); // تحديث كل 10 ملي ثانية للحصول على عد تنازلي سلس
+        }
+        
+        // تحديث العد التنازلي فوراً ثم كل ثانية
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
         
         // التأكد من عرض الصفحة بشكل صحيح عند التحميل
         window.addEventListener('load', function() {
