@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المهندس عدنان الكسمو ينتظر ردكم على خطبته</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 2px solid gold;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            color: #ffd700;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            line-height: 1.3;
+        }
+        
+        .verse {
+            font-size: 1.8rem;
+            color: #a3ffb3;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            padding: 20px;
+            background-color: rgba(0, 50, 0, 0.3);
+            border-radius: 15px;
+            border-right: 5px solid #4CAF50;
+        }
+        
+        .verse-ref {
+            font-size: 1.3rem;
+            color: #90caf9;
+            margin-bottom: 30px;
+        }
+        
+        .countdown-container {
+            margin: 50px 0;
+        }
+        
+        .countdown-title {
+            font-size: 2.2rem;
+            color: #ffcc80;
+            margin-bottom: 30px;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .countdown-box {
+            background: linear-gradient(145deg, #0d47a1, #1976d2);
+            border-radius: 15px;
+            padding: 25px 15px;
+            min-width: 150px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid #64b5f6;
+        }
+        
+        .countdown-value {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .countdown-label {
+            font-size: 1.5rem;
+            color: #bbdefb;
+            margin-top: 10px;
+        }
+        
+        .message {
+            display: none;
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(76, 175, 80, 0.9));
+            border-radius: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .message h2 {
+            font-size: 4rem;
+            color: #ffeb3b;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .message p {
+            font-size: 2rem;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            font-size: 1.3rem;
+            color: #ffcc80;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.3rem; }
+            .verse { font-size: 1.4rem; }
+            .countdown-box { min-width: 120px; }
+            .countdown-value { font-size: 3.5rem; }
+            .message h2 { font-size: 2.8rem; }
+            .message p { font-size: 1.6rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8rem; }
+            .verse { font-size: 1.2rem; }
+            .countdown { gap: 15px; }
+            .countdown-box { 
+                min-width: 100px;
+                padding: 20px 10px;
+            }
+            .countdown-value { font-size: 2.8rem; }
+            .message h2 { font-size: 2.2rem; }
+            .message p { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>المهندس عدنان الكسمو ينتظر ردكم على خطبته</h1>
+            <div class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً إِنَّ فِي ذَلِكَ لآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ</div>
+            <div class="verse-ref">سورة الروم - الآية 21</div>
+        </div>
+        
+        <div class="countdown-container">
+            <div class="countdown-title">الوقت المتبقي للرد:</div>
+            <div class="countdown">
+                <div class="countdown-box">
+                    <div class="countdown-value" id="days">48</div>
+                    <div class="countdown-label">ساعة</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">دقيقة</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">ثانية</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">جزء من الثانية</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message" id="finalMessage">
+            <h2>نحن منكم وأنتم منكم</h2>
+            <p>شكراً لصبركم وانتظاركم، لقد تم استلام ردكم وسيتم الرد عليكم قريباً بإذن الله</p>
+        </div>
+        
+        <div class="footer">
+            مع أطيب التمنيات بالحياة السعيدة للجميع
+        </div>
+    </div>
+
+    <script>
+        // تحديد وقت انتهاء العد التنازلي (48 ساعة من الآن)
+        const countdownDuration = 48 * 60 * 60 * 1000; // 48 ساعة بالميلي ثانية
+        const countdownEndTime = new Date().getTime() + countdownDuration;
+        
+        // تحديث العد التنازلي كل ثانية
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownEndTime - now;
+            
+            // إذا انتهى الوقت
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                
+                // إظهار الرسالة النهائية
+                document.getElementById("finalMessage").style.display = "block";
+                return;
+            }
+            
+            // حساب الوقت المتبقي
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((distance % 1000) / 10);
+            
+            // عرض الوقت المتبقي
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+            
+        }, 10); // تحديث كل 10 ملي ثانية للحصول على عد تنازلي سلس
+        
+        // التأكد من عرض الصفحة بشكل صحيح عند التحميل
+        window.addEventListener('load', function() {
+            document.body.style.opacity = 1;
+        });
+    </script>
+</body>
+</html>
